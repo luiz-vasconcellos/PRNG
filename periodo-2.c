@@ -28,26 +28,11 @@ unsigned long period (unsigned long seed, unsigned long A,
                       unsigned long C, unsigned long M) {
   lcrandom_parms(A,C,M);                             
 
-  char  *past = (char *) malloc (lcrandom_max() + 1);   // Um LCM tem no máximo período M
-  int size = 8;                                         // 1 char == 8 bits 
-  unsigned long p = 0;                                  // Periodo
-  for(int i = 0; i <= lcrandom_max(); ++i)
-    past[i] = 0;
+	char *past = (char *) malloc(lcrandom_max() + 1);
+  unsigned long p = 0;
   
-  while(1) {
-    unsigned long random_no = lcrandom();               // Gera um número aleatório
+	while(++past[lcrandom()] <= 1) ++p;
+  free(past);
+  return (p-1);
 
-    unsigned long idx = (random_no / size);
-    unsigned long pos = random_no % size;
-    // Cálcula a posição do vetor past e o bit correspondente
-    unsigned long mask = 1 << pos;
-
-    if(past[idx]  == (past[idx] | mask)) {              // Compara se o número já foi gerado
-      free(past);
-      return p-1;
-    }
-    
-    past[idx] |= mask;                                  // Registra o número
-    ++p;
-  }
 }
