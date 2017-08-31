@@ -26,12 +26,15 @@ int main () {
 */
 unsigned long period (unsigned long seed, unsigned long A,
                       unsigned long C, unsigned long M) {
-  lcrandom_parms(A,C,M);                             
 
+  lcrandom_parms(A,C,M);                             
+  // Alocando um char para cada valor possível
 	char *past = (char *) malloc(lcrandom_max() + 1);
+  // p é o período
   unsigned long p = 0;
   
 	while(++past[lcrandom()] <= 1) ++p;
+  // Liberando a memória alocada
   free(past);
   return (p-1);
 

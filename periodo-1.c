@@ -22,14 +22,18 @@ int main () {
 */
 unsigned long period (unsigned long seed, unsigned long A,
                       unsigned long C, unsigned long M) {
-  // We don't change params for periodo-1
+  // Não mudamos os parâmetros em periodo-1
   //lcrandom_parms(A,C,M);                          
 
-  // Allocating one char for every possible result
+  // Alocando um char para cada valor possível
 	char *past = (char *) malloc(lcrandom_max() + 1);
-  unsigned long p = 0; // P is period
+  // p é o período
+  unsigned long p = 0;
   
 	while(++past[lcrandom()] <= 1) ++p; 
-  free(past);          // Don't forget to deallocate
+
+  // Liberando a memória alocada
+  free(past);
+
   return (p-1);
 }
