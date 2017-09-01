@@ -11,6 +11,9 @@
 #define C0 12345
 #define M0 2147483648
 
+#define RESET "\x1B[0m"
+#define KRED  "\x1B[31m"
+
 // Declaração das funções auxiliares (Ver implementação p/ comentários)
 void print_hist(unsigned long*, unsigned long);
 void print_hist_line(unsigned long, unsigned long, unsigned long);
@@ -88,6 +91,9 @@ void print_hist(unsigned long *freq, unsigned long max) {
 */
 void print_hist_line(unsigned long freq_i,
                      unsigned long idx, unsigned long max) {
+  // Colunas pares em vermelho para facilitar a visualização
+  if (idx % 2 == 0)
+    printf(KRED);
 
   printf("%2lu|", idx);
   // Calculo do tamanho da coluna da frequência relativa:
@@ -96,5 +102,9 @@ void print_hist_line(unsigned long freq_i,
 
   for(unsigned long i = 0; i < col_size; ++i) 
     printf("*");
+
+  if (idx % 2 == 0)
+    printf(RESET); // Volta ao branco
+
   printf("\n");
 }
