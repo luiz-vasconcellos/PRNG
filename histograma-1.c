@@ -59,6 +59,12 @@ void print_hist(unsigned long *freq, unsigned long max) {
   // Imprime cada uma das linhas do histograma 
   for (unsigned long line = 0; line < max; ++line) 
     print_hist_line (freq[line], line, most_freq); 
+
+  // Imprime o rodapé do histograma para facilitar comparação
+  printf("  +");
+  for(i = 0; i < 10; ++i)
+    printf("----+");
+  printf("\n");
 }
 
 
