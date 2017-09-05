@@ -3,3 +3,6 @@ histograma-1
 histograma-2
 periodo-1
 periodo-2
+*.tar
+*.gz
+*.zip

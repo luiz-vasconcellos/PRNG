@@ -11,16 +11,17 @@ There are 4 programs here:
 4. Periodo for the generator with better values (periodo-2)
 
 
-Please note that for any normal use, better parameters should be set for the renerator, such as A = 1103515245, C = 12345 e M = 2147483648.
+Please note that for any normal use, better parameters should be set for the renerator, such as A = 1103515245, C = 12345 and M = 2147483648.
 Even then, this should **not** be used in any remotely serious application that needs random numbers.
 
 ## Compiling
 
 To generate all of the programs listed above, simply run `make`. You can also run make for each of the individual programs with its name.
+You can also run `make compress` to generate a .tar.gz ready to send for my professor :) (But remember plagiarism is bad).
 
 ## Dependencies
 
-* GCC to compile the code.
-* Make to run the targets.
-
+* gcc to compile the code.
+* make to run the targets.
+* tar to generate tarball
 

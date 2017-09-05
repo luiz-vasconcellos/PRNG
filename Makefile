@@ -25,7 +25,10 @@ periodo-1.o: periodo-1.c lcrandom.c
 periodo-2.o: periodo-2.c lcrandom.c
 lcrandom.o: lcrandom.c
 
-.PHONY: clean
+.PHONY: clean compress 
 clean:
 	rm *.o
 	rm histograma-1 histograma-2 periodo-1 periodo-2
+
+compress:
+	tar -cvzf projeto_01.tar.gz *.c
