@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "lcrandom.h"
 
 #define A0 1103515245
@@ -13,8 +14,8 @@ unsigned long period(unsigned long, unsigned long,
                      unsigned long, unsigned long);
 
 int main () {
-  printf("%lu\n", period(0,A0,C0,M0));
-  return 0; 
+    printf("%lu\n", period(0,A0,C0,M0));
+    return 0; 
 }
 
 /*
@@ -27,15 +28,16 @@ int main () {
 unsigned long period (unsigned long seed, unsigned long A,
                       unsigned long C, unsigned long M) {
 
-  lcrandom_parms(A,C,M);                             
-  // Alocando um char para cada valor possível
-	char *past = (char *) malloc(lcrandom_max() + 1);
-  // p é o período
-  unsigned long p = 0;
+    lcrandom_parms(A,C,M);                             
+    // Alocando um char para cada valor possível
+	char *past = (char *) calloc(sizeof(char), lcrandom_max() + 1);
+    if (past == NULL) abort();
+
+    // p é o período
+    unsigned long p = 0;
   
 	while(++past[lcrandom()] <= 1) ++p;
-  // Liberando a memória alocada
-  free(past);
-  return (p-1);
-
+    // Liberando a memória alocada
+    free(past);
+    return (p-1);
 }
