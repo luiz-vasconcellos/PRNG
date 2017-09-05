@@ -16,8 +16,9 @@ Even then, this should **not** be used in any remotely serious application that 
 
 ## Compiling
 
-To generate all of the programs listed above, simply run `make`. You can also run make for each of the individual programs with its name.
-You can also run `make compress` to generate a .tar.gz ready to send for my professor :) (But remember plagiarism is bad).
+To generate all of the programs listed above, simply run `make`.
+You can also run make for each of the individual programs with its name.
+Last, there is run `make compress` to generate a .tar.gz ready to send for my professor :) (But remember: plagiarism is bad).
 
 ## Dependencies
 
