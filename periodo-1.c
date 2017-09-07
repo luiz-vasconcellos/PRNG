@@ -3,7 +3,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 #include "lcrandom.h"
 
 unsigned long period(unsigned long, unsigned long,
