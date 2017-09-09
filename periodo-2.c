@@ -27,16 +27,20 @@ int main () {
 unsigned long period (unsigned long seed, unsigned long A,
                       unsigned long C, unsigned long M) {
 
-    lcrandom_parms(A,C,M);                             
-    // Alocando um char para cada valor possível
+  lcrandom_parms(A,C,M);                             
+  // Alocando um char para cada valor possível
 	char *past = (char *) calloc(sizeof(char), lcrandom_max() + 1);
-    if (past == NULL) abort();
+  if (past == NULL) {
+    fprintf(stderr, "Falha ao alocar memoria para calculo do periodo.");
+    return 0;
+  }
 
-    // p é o período
-    unsigned long p = 0;
+  // p é o período
+  unsigned long p = 0;
   
 	while(++past[lcrandom()] <= 1) ++p;
-    // Liberando a memória alocada
-    free(past);
-    return (p-1);
+
+  // Liberando a memória alocada
+  free(past);
+  return (p-1);
 }

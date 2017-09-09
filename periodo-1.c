@@ -27,7 +27,10 @@ unsigned long period (unsigned long seed, unsigned long A,
 
     // Alocando um char para cada valor possível
     char *past = (char *) calloc(sizeof(char),lcrandom_max() + 1);
-    if (past == NULL) abort();
+    if (past == NULL) {
+        fprintf(stderr, "Falha ao alocar memoria para calculo do periodo.");
+        return 0;
+    }
 
     // p é o período
     unsigned long p = 0;
